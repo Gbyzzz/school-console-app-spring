@@ -1,9 +1,11 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.impl;
 
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupDAO;
@@ -38,6 +40,7 @@ public class GroupDAOImpl implements GroupDAO {
 
     private final JdbcTemplate jdbcTemplate;
     private final RowMapper<Group> groupRowMapper;
+
     public GroupDAOImpl(JdbcTemplate jdbcTemplate, RowMapper<Group> groupRowMapper) {
         this.jdbcTemplate = jdbcTemplate;
         this.groupRowMapper = groupRowMapper;
@@ -62,16 +65,14 @@ public class GroupDAOImpl implements GroupDAO {
 
     @Override
     public Map<Group, Integer> getGroupsByNumberOfStudents(int students) {
-       return jdbcTemplate.query(SQL_GET_GROUPS_BY_NUMBER_OF_STUDENTS,
-               preparedStatement -> preparedStatement.setInt(1, students),
-               (ResultSet rs, int rowNum) -> {
-           Map<Group, Integer> res = new HashMap<>();
-           while (rs.next()){
-               res.put(groupRowMapper.mapRow(rs, rowNum), rs.getInt("total_students"));
-           }
-           return res;
-       }).get(0);
+        return jdbcTemplate.query(SQL_GET_GROUPS_BY_NUMBER_OF_STUDENTS,
+                preparedStatement -> preparedStatement.setInt(1, students),
+                rs -> {
+                    Map<Group, Integer> res = new HashMap<>();
+                    while (rs.next()) {
+                        res.put(groupRowMapper.mapRow(rs, 0), rs.getInt("total_students"));
+                    }
+                    return res;
+                });
     }
-
-
 }

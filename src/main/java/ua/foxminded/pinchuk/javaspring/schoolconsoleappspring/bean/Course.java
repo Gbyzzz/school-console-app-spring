@@ -1,11 +1,15 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Course {
     private Integer courseId;
     private String courseName;
@@ -13,18 +17,10 @@ public class Course {
 
     private List<Student> students;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Course course = (Course) o;
-        return courseId == course.courseId && Objects.equals(courseName, course.courseName)
-                && Objects.equals(courseDescription, course.courseDescription) && Objects.equals(students, course.students);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(courseId, courseName, courseDescription, students);
+    public Course(Integer courseId, String courseName, String courseDescription) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.courseDescription = courseDescription;
     }
 
     @Override

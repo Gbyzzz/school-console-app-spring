@@ -1,5 +1,6 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +8,7 @@ import java.util.Objects;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Student {
     private Integer studentId;
     private String firstName;
@@ -24,13 +26,12 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return studentId == student.studentId && Objects.equals(group, student.group) &&
-                Objects.equals(firstName, student.firstName) && Objects.equals(lastName, student.lastName);
+        return Objects.equals(studentId, student.studentId) && Objects.equals(firstName, student.firstName) && Objects.equals(lastName, student.lastName) && Objects.equals(group, student.group);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(studentId, group, firstName, lastName);
+        return Objects.hash(studentId, firstName, lastName, group);
     }
 
     @Override

@@ -59,13 +59,11 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public void deleteStudentById(int studentId) {
-        jdbcTemplate.query(SQL_REMOVE_STUDENT_BY_ID, studentRowMapper, studentId);
+        jdbcTemplate.update(SQL_REMOVE_STUDENT_BY_ID, studentId);
     }
 
     @Override
     public List<Student> getStudentsByCourseId(int courseId) {
         return jdbcTemplate.query(SQL_GET_STUDENTS_BY_COURSE_ID, studentRowMapper, courseId);
     }
-
-
 }

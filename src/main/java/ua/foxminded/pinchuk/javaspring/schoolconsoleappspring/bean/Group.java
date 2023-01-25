@@ -1,10 +1,14 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Group {
     private Integer groupId;
     private String groupName;
@@ -14,7 +18,7 @@ public class Group {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Group group = (Group) o;
-        return groupId == group.groupId && Objects.equals(groupName, group.groupName);
+        return Objects.equals(groupId, group.groupId) && Objects.equals(groupName, group.groupName);
     }
 
     @Override
