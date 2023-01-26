@@ -69,6 +69,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>Version Calculation</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>docker compose up</executable>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

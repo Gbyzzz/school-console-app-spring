@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  postgres:
+    build: ./db
+    ports:
+      - "5433:5432"
+    restart: always
+    container_name: school_db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: school_db

@@ -1,0 +1,1 @@
+pg_restore -d school_db /var/lib/postgresql/backup/school_db_create.sql
