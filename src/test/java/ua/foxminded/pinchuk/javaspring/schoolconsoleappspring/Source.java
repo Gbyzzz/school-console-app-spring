@@ -22,7 +22,12 @@ public class Source {
         add(new Course(2, "Physics",
                 "Physics lessons"));
     }};
-
+    public static List<Course> coursesWithStudents = new ArrayList<>() {{
+        add(new Course(1, "Math",
+                "Math lessons", students));
+        add(new Course(2, "Physics",
+                "Physics lessons"));
+    }};
 
     public static Stream<Arguments> provideCoursesByStudent() {
         return Stream.of(
@@ -50,6 +55,13 @@ public class Source {
 
         return Stream.of(
                 Arguments.of(students, 2));
+    }
+
+    public static Stream<Arguments> provideCourses() {
+
+        return Stream.of(
+                Arguments.of(students, 0),
+                Arguments.of(null, 1));
     }
 
 }
