@@ -1,26 +1,34 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.controller.menu.Menu;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.InitDBService;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.view.IOData;
 
 @SpringBootApplication
 public class SchoolConsoleAppSpringApplication implements ApplicationRunner {
-
     private static Menu menu;
     private static InitDBService initDBService;
+    private static IOData ioData;
 
-    public SchoolConsoleAppSpringApplication(Menu menu, InitDBService initDBService) {
+    public SchoolConsoleAppSpringApplication(Menu menu, InitDBService initDBService, IOData ioData) {
+
         this.menu = menu;
         this.initDBService = initDBService;
+        this.ioData = ioData;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SchoolConsoleAppSpringApplication.class, args);
-        menu.start();
+        try {
+            SpringApplication.run(SchoolConsoleAppSpringApplication.class, args);
+            menu.start();
+        } catch (Exception e) {
+            ioData.outputLine("Something went wrong: " + e);
+        }
     }
 
     @Override

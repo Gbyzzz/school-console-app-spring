@@ -23,9 +23,9 @@ public class Course {
         this.courseDescription = courseDescription;
     }
 
-//    @Override
-//    public String toString() {
-//        return courseId + " . " + courseName + ": " + courseDescription;
-//    }
+    @Override
+    public String toString() {
+        return courseId + " . " + courseName + ": " + courseDescription;
+    }
 
 }
