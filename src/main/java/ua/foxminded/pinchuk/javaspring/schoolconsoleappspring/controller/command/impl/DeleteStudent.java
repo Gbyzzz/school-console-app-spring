@@ -1,7 +1,6 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.controller.command.impl;
 
 import org.springframework.stereotype.Component;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleapp.dao.exception.DAOException;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.controller.command.Command;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.StudentService;
@@ -20,7 +19,7 @@ public class DeleteStudent implements Command {
         this.studentService = studentService;
     }
 
-    public void execute() throws DAOException {
+    public void execute() {
         List<Student> students = studentService.findAllStudents();
         if (!students.isEmpty()) {
             io.outputLine("Please select student from the list below:");

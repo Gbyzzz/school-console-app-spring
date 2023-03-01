@@ -3,7 +3,6 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.controller.menu;
 import org.springframework.stereotype.Component;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.controller.command.CommandProvider;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.controller.command.Command;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleapp.dao.exception.DAOException;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.view.IOData;
 
 @Component
@@ -17,7 +16,7 @@ public class Menu {
         this.commandProvider = commandProvider;
     }
 
-    public void start() throws DAOException {
+    public void start() {
         int select;
         Command command;
         io.outputLine("Hello! You've just started my program, please select the task which you want to launch:");

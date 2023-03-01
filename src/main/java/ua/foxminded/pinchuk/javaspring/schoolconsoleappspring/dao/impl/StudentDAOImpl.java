@@ -4,10 +4,8 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleapp.dao.exception.DAOException;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -105,7 +103,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<Student> getAllStudents() throws DAOException {
+    public List<Student> getAllStudents() {
         return jdbcTemplate.query(SQL_GET_ALL_STUDENTS, studentRowMapper);
     }
 
