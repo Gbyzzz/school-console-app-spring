@@ -29,6 +29,5 @@ public class FindGroupsByNumberOfStudents implements Command {
             io.outputLine("No group with such number of students were found");
         }
         io.outputLine("");
-        System.out.println(10/0);
     }
 }

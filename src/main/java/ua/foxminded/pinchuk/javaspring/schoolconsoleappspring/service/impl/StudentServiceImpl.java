@@ -1,6 +1,7 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.StudentService;
@@ -17,8 +18,9 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public void addStudent(Student student) {
-        studentDAO.addStudent(student);
+        studentDAO.saveOrUpdate(student);
     }
 
     @Override
@@ -27,13 +29,15 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void deleteStudentById(int studentId) {
-        studentDAO.deleteStudentById(studentId);
+    @Transactional
+    public void deleteStudent(Student student) {
+        studentDAO.deleteStudentById(student);
     }
 
     @Override
-    public List<Student> findStudentsByCourse(int courseId) {
-        return studentDAO.getStudentsByCourseId(courseId);
+    public Student findStudentById(int studentId) {
+        return studentDAO.getStudentById(studentId);
     }
+
 
 }

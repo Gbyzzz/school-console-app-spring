@@ -4,6 +4,7 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service;
 
 import org.springframework.stereotype.Service;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Course;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
 
 import java.util.List;
 
@@ -11,9 +12,9 @@ import java.util.List;
 public interface CourseService {
     List<Course> findAllCourses();
 
-    List<Course> findCourseByStudentId(int studentId);
+    void saveOrUpdate(Course course);
 
-    void addStudentToCourse(int studentId, int courseId);
+    void removeStudentFromCourse(Student student, Course course);
 
-    void removeStudentFromCourse(int studentId, int courseId);
+    Course findCourseById(int courseId);
 }

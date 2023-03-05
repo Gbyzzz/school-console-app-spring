@@ -28,7 +28,7 @@ public class FindStudentsByCourse implements Command {
             io.outputList(courses);
             io.outputLine("Input the index of the course");
             int courseId = io.getInt();
-            io.outputList(studentService.findStudentsByCourse(courseId));
+            io.outputList(courseService.findCourseById(courseId).getStudents());
             io.outputLine("");
         } else {
             io.outputLine("No courses were found");

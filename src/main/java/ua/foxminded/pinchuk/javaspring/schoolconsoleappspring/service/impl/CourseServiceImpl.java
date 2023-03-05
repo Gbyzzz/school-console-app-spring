@@ -1,6 +1,7 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 
 import org.springframework.stereotype.Service;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseDAO;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Course;
@@ -22,25 +23,22 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Course> findAllCourses() {
         List<Course> courses = courseDAO.getAllCourses();
-        for (Course course : courses) {
-            course.setStudents(studentDAO.getStudentsByCourseId(course.getCourseId()));
-        }
-
         return courses;
     }
 
     @Override
-    public List<Course> findCourseByStudentId(int studentId) {
-        return courseDAO.getCoursesByStudentId(studentId);
+    public void saveOrUpdate(Course course) {
+        courseDAO.saveOrUpdate(course);
     }
 
     @Override
-    public void addStudentToCourse(int studentId, int courseId) {
-        courseDAO.addStudentToCourse(studentId, courseId);
+    public void removeStudentFromCourse(Student student, Course course) {
+        course.getStudents().remove(student);
+        courseDAO.saveOrUpdate(course);
     }
 
     @Override
-    public void removeStudentFromCourse(int studentId, int courseId) {
-        courseDAO.removeStudentFromCourse(studentId, courseId);
+    public Course findCourseById(int courseId) {
+        return courseDAO.getCourseById(courseId);
     }
 }

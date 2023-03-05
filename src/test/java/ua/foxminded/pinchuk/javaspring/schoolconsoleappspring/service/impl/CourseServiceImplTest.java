@@ -24,7 +24,7 @@ class CourseServiceImplTest {
     CourseServiceImpl courseService;
     @Test
     void findAllCourses() {
-        when(courseDao.getAllCourses()).thenReturn(Source.courses);
+        when(courseDao.findAllCourses()).thenReturn(Source.courses);
         when(studentDAO.getStudentsByCourseId(1)).thenReturn(Source.students);
         when(studentDAO.getStudentsByCourseId(2)).thenReturn(null);
         assertEquals(Source.coursesWithStudents, courseService.findAllCourses());

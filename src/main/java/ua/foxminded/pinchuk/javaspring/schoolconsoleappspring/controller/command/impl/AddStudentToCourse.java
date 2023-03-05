@@ -31,14 +31,17 @@ public class AddStudentToCourse implements Command {
             io.outputList(students);
             io.outputLine("Input the index of the student");
             int studentId = io.getInt();
+            Student student = studentService.findStudentById(studentId);
             io.outputLine("This student already visiting next courses:");
-            io.outputList(courseService.findCourseByStudentId(studentId));
+            io.outputList(student.getCourses());
             io.outputLine("List of available courses:");
             io.outputList(courses);
             io.outputLine("");
             io.outputLine("Input the index of the course");
             int courseId = io.getInt();
-            courseService.addStudentToCourse(studentId, courseId);
+            Course course = courseService.findCourseById(courseId);
+            course.getStudents().add(student);
+            courseService.saveOrUpdate(course);
         } else {
             io.outputLine("No students or courses were found");
         }

@@ -1,6 +1,7 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.GroupService;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupDAO;
@@ -34,6 +35,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
+    @Transactional
     public Map<Group, Integer> findGroupsByNumberOfStudents(int students) {
         return groupDAO.getGroupsByNumberOfStudents(students);
     }

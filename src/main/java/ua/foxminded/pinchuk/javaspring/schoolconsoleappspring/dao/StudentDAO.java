@@ -7,19 +7,11 @@ import java.util.List;
 
 public interface StudentDAO {
 
-    boolean checkIfTableExists();
-
-    void createTable();
-
-    void saveAll(List<Student> students);
-
-    void addStudent(Student student);
+    void saveOrUpdate(Student student);
 
     List<Student> getAllStudents();
 
-    void deleteStudentById(int studentId);
+    void deleteStudentById(Student student);
 
-    List<Student> getStudentsByCourseId(int courseId);
-
-
+    Student getStudentById(int studentId);
 }

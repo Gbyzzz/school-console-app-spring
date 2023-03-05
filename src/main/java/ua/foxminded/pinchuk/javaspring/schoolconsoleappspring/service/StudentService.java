@@ -10,7 +10,7 @@ public interface StudentService {
 
     List<Student> findAllStudents();
 
-    void deleteStudentById(int studentId);
+    void deleteStudent(Student studentId);
 
-    List<Student> findStudentsByCourse(int courseId);
+    Student findStudentById(int studentId);
 }

@@ -10,15 +10,14 @@ import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.InitDBServ
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.view.IOData;
 
 @SpringBootApplication
-public class SchoolConsoleAppSpringApplication implements ApplicationRunner {
+public class SchoolConsoleAppSpringApplication {
     private static Menu menu;
-    private static InitDBService initDBService;
+
     private static IOData ioData;
 
-    public SchoolConsoleAppSpringApplication(Menu menu, InitDBService initDBService, IOData ioData) {
+    public SchoolConsoleAppSpringApplication(Menu menu, IOData ioData) {
 
         this.menu = menu;
-        this.initDBService = initDBService;
         this.ioData = ioData;
     }
 
@@ -31,8 +30,8 @@ public class SchoolConsoleAppSpringApplication implements ApplicationRunner {
         }
     }
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-        initDBService.initDB();
-    }
+//    @Override
+//    public void run(ApplicationArguments args) throws Exception {
+//        initDBService.initDB();
+//    }
 }
