@@ -10,3 +10,11 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: school_db
+  service:
+    build: ./
+    depends_on:
+      - "postgres"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/school_db
+      - SPRING_FLYWAY_ENABLED=false

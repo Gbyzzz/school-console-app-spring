@@ -3,7 +3,6 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.impl;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupDAO;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
 
@@ -50,14 +49,4 @@ public class GroupDAOImpl implements GroupDAO {
                 )
         );
     }
-//        return jdbcTemplate.query(SQL_GET_GROUPS_BY_NUMBER_OF_STUDENTS,
-//                preparedStatement -> preparedStatement.setInt(1, students),
-//                rs -> {
-//                    Map<Group, Integer> res = new HashMap<>();
-//                    while (rs.next()) {
-//                        res.put(groupRowMapper.mapRow(rs, 0), rs.getInt("total_students"));
-//                    }
-//                    return res;
-//                });
-//    }
 }

@@ -39,6 +39,13 @@ public class Student {
         this.group = group;
     }
 
+    public Student(Integer studentId, String firstName, String lastName, Group group) {
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.group = group;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

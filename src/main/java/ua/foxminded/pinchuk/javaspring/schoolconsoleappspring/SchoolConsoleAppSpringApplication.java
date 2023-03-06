@@ -1,12 +1,8 @@
 package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.controller.menu.Menu;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.InitDBService;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.view.IOData;
 
 @SpringBootApplication
@@ -29,9 +25,4 @@ public class SchoolConsoleAppSpringApplication {
             ioData.outputLine("Something went wrong: " + e);
         }
     }
-
-//    @Override
-//    public void run(ApplicationArguments args) throws Exception {
-//        initDBService.initDB();
-//    }
 }

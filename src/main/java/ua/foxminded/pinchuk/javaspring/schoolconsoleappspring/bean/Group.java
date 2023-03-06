@@ -26,17 +26,9 @@ public class Group {
             inverseJoinColumns = { @JoinColumn(name = "studenta_id") })
     private List<Student> students;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Group group = (Group) o;
-        return Objects.equals(groupId, group.groupId) && Objects.equals(groupName, group.groupName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(groupId, groupName);
+    public Group(Integer groupId, String groupName) {
+        this.groupId = groupId;
+        this.groupName = groupName;
     }
 
     @Override
