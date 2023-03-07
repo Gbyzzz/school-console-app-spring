@@ -23,7 +23,7 @@ public class Group {
 
     @OneToMany()
     @JoinTable(name = "students", joinColumns = { @JoinColumn(name = "group_id") },
-            inverseJoinColumns = { @JoinColumn(name = "studenta_id") })
+            inverseJoinColumns = { @JoinColumn(name = "student_id") })
     private List<Student> students;
 
     public Group(Integer groupId, String groupName) {
