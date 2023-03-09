@@ -19,8 +19,8 @@ public class StudentDAOImpl implements StudentDAO {
             "FROM Student s";
 
     @Override
-    public void saveOrUpdate(Student student) {
-        entityManager.merge(student);
+    public Student saveOrUpdate(Student student) {
+        return entityManager.merge(student);
     }
 
     @Override

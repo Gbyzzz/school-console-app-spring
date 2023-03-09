@@ -4,45 +4,32 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.test.context.jdbc.Sql;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBase;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Course;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseDAO;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest
-//@DataJpaTest(includeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {
-//        CourseDAOImplTest.class
-//}))
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@Sql(
-//        scripts = {"/sql/clear_tables.sql", "/sql/sample_data.sql"},
-//        executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD
-//)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class CourseDAOImplTest extends IntegrationTestBase {
     @Autowired
     private CourseDAO courseDAO;
     @Autowired
-
     private StudentDAO studentDAO;
 
     @Test
+    @Order(1)
     public void getAllCourses_ShouldReturnListOfCourses_WhenCallingMethod() {
-//        assertEquals(Source.courses, courseDAO.getAllCourses());
+        assertEquals(Source.coursesWithStudents, courseDAO.getAllCourses());
     }
 
 //    @ParameterizedTest
@@ -53,7 +40,7 @@ class CourseDAOImplTest extends IntegrationTestBase {
 //
 //    @ParameterizedTest
 //    @Order(2)
-//    @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideStudents")
+//    @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideStudents
 //    void addStudentToCourse(List<Student> expected) {
 //        Student student = new Student(2, "Jeremy", "Brown", Source.group);
 //        expected.add(student);
@@ -73,15 +60,18 @@ class CourseDAOImplTest extends IntegrationTestBase {
 
 
     @Test
+    @Order(3)
     void saveOrUpdate() {
-//        Course course = Source.courses.get(0);
-//        course.setCourseName("New course");
-//        courseDAO.saveOrUpdate(course);
-//        assertEquals(Source.courses, courseDAO.getAllCourses());
+        Course course = Source.coursesWithStudents.get(0);
+        course.setCourseName("New course");
+        courseDAO.saveOrUpdate(course);
+        System.out.println(courseDAO.getCourseById(1));
+        assertEquals(Source.coursesWithStudents, courseDAO.getAllCourses());
     }
 
     @Test
+    @Order(2)
     void getCourseById() {
-//        assertEquals(Source.courses, courseDAO.getAllCourses());
+        assertEquals(Source.coursesWithStudents.get(1), courseDAO.getCourseById(2));
     }
 }

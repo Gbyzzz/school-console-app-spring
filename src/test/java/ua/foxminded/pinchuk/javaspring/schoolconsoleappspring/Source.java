@@ -24,9 +24,9 @@ public class Source {
     }};
     public static List<Course> coursesWithStudents = new ArrayList<>() {{
         add(new Course(1, "Math",
-                "Math lessons", students));
+                "Math lessons", new ArrayList<>(){{add(students.get(0));}}));
         add(new Course(2, "Physics",
-                "Physics lessons"));
+                "Physics lessons", students));
     }};
 
     public static Stream<Arguments> provideCoursesByStudent() {
@@ -51,10 +51,11 @@ public class Source {
                 Arguments.of(students));
     }
 
-    public static Stream<Arguments> provideGetStudentsByCourseId() {
+    public static Stream<Arguments> provideGetStudentById() {
 
         return Stream.of(
-                Arguments.of(students, 2));
+                Arguments.of(students.get(0), 1),
+                Arguments.of(students.get(1), 2));
     }
 
     public static Stream<Arguments> provideCourses() {

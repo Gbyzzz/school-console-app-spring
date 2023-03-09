@@ -28,16 +28,7 @@ class StudentServiceImplTest {
 
     @Test
     void findAllStudents() {
-//        when(studentDAO.getAllStudents()).thenReturn(Source.students);
-//        assertEquals(Source.students, studentService.findAllStudents());
-    }
-
-    @ParameterizedTest
-    @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideCourses")
-    void findStudentsByCourse(List<Student> expected, int courseId) {
-//        when(studentDAO.getStudentsByCourseId(0)).thenReturn(Source.students);
-//        when(studentDAO.getStudentsByCourseId(1)).thenReturn(null);
-//        assertEquals(expected, studentDAO.getStudentsByCourseId(courseId));
-
+        when(studentDAO.getAllStudents()).thenReturn(Source.students);
+        assertEquals(Source.students, studentService.findAllStudents());
     }
 }

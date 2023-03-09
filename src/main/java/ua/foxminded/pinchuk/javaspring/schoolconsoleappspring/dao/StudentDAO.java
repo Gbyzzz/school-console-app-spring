@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StudentDAO {
 
-    void saveOrUpdate(Student student);
+    Student saveOrUpdate(Student student);
 
     List<Student> getAllStudents();
 

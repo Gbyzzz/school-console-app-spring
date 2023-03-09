@@ -23,7 +23,7 @@ public class GroupDAOImpl implements GroupDAO {
             "select g from Group g where groupId = :id";
 
     private static final String SQL_GET_GROUPS_BY_NUMBER_OF_STUDENTS = "" +
-            "select g from Group g where size(g.students) < :num";
+            "select g from Group g where size(g.students) <= :num";
 
     @Override
     public List<Group> getAllGroups() {

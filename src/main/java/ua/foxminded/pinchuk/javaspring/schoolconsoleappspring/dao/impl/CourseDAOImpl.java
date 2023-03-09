@@ -15,8 +15,7 @@ public class CourseDAOImpl implements CourseDAO {
     private EntityManager entityManager;
 
     private static final String GET_ALL_COURSES = "" +
-            "SELECT c " +
-            "FROM Course c";
+            "select c from Course c ORDER BY c.courseId";
 
     @Override
     public List<Course> getAllCourses() {

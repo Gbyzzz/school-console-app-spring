@@ -22,18 +22,13 @@ class CourseServiceImplTest {
 
     @Autowired
     CourseServiceImpl courseService;
+
     @Test
     void findAllCourses() {
-//        when(courseDao.findAllCourses()).thenReturn(Source.courses);
-//        when(studentDAO.getStudentsByCourseId(1)).thenReturn(Source.students);
-//        when(studentDAO.getStudentsByCourseId(2)).thenReturn(null);
-//        assertEquals(Source.coursesWithStudents, courseService.findAllCourses());
+        when(courseDao.getAllCourses()).thenReturn(Source.coursesWithStudents);
+        assertEquals(Source.coursesWithStudents, courseService.findAllCourses());
     }
 
-    @Test
-    void findCourseByStudentId() {
-//        when(courseDao.getCoursesByStudentId(1)).thenReturn(Source.courses);
-//        assertEquals(Source.courses, courseService.findCourseByStudentId(1));
-
-    }
 }
+
+

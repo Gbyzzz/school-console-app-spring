@@ -7,10 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "groups")
 public class Group {
@@ -26,10 +22,66 @@ public class Group {
             inverseJoinColumns = { @JoinColumn(name = "student_id") })
     private List<Student> students;
 
+    public Group() {
+    }
+
     public Group(Integer groupId, String groupName) {
         this.groupId = groupId;
         this.groupName = groupName;
     }
+
+    public Group(Integer groupId, String groupName, List<Student> students) {
+        this.groupId = groupId;
+        this.groupName = groupName;
+        this.students = students;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return Objects.equals(groupId, group.groupId) &&
+                Objects.equals(groupName, group.groupName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(groupId, groupName);
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Group{" +
+//                "groupId=" + groupId +
+//                ", groupName='" + groupName + '\'' +
+//                ", students=" + students +
+//                '}';
+//    }
 
     @Override
     public String toString() {
