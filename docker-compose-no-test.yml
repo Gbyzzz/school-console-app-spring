@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  postgres:
+    build: ./db
+    ports:
+      - "5433:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: school_db
+  service:
+    build: ./
+    depends_on:
+      - "postgres"
+    restart: always
+    stdin_open: true
+    tty: true
+    command: bash -c "apk add --no-cache bash && exec bash"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/school_db

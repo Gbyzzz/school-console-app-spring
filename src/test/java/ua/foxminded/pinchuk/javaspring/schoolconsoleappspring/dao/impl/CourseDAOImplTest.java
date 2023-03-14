@@ -11,9 +11,6 @@ import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBas
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Course;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseDAO;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -23,41 +20,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CourseDAOImplTest extends IntegrationTestBase {
     @Autowired
     private CourseDAO courseDAO;
-    @Autowired
-    private StudentDAO studentDAO;
 
     @Test
     @Order(1)
     public void getAllCourses_ShouldReturnListOfCourses_WhenCallingMethod() {
         assertEquals(Source.coursesWithStudents, courseDAO.getAllCourses());
     }
-
-//    @ParameterizedTest
-//    @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideCoursesByStudent")
-//    public void getCoursesByStudentId_ShouldReturnListOfCourses_WhenCallingMethod(List<Course> expected, int id) {
-//        assertEquals(courseDAO.getCourseById(id), expected);
-//    }
-//
-//    @ParameterizedTest
-//    @Order(2)
-//    @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideStudents
-//    void addStudentToCourse(List<Student> expected) {
-//        Student student = new Student(2, "Jeremy", "Brown", Source.group);
-//        expected.add(student);
-//        courseDAO.addStudentToCourse(2, 2);
-//        assertEquals(expected, studentDAO.getStudentsByCourseId(2));
-//    }
-//
-//    @ParameterizedTest
-//    @Order(1)
-//    @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideStudents")
-//    void removeStudentFromCourse(List<Student> expected) {
-//        expected.remove(1);
-//        courseDAO.removeStudentFromCourse(2, 2);
-//        assertEquals(expected, studentDAO.getStudentsByCourseId(2));
-//    }
-
-
 
     @Test
     @Order(3)
