@@ -6,10 +6,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBase;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupDAO;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -3,42 +3,47 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.GroupService;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupDAO;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class GroupServiceImpl implements GroupService {
 
-    private GroupDAO groupDAO;
+    private GroupRepository groupRepository;
 
-    public GroupServiceImpl(GroupDAO groupDAO) {
-        this.groupDAO = groupDAO;
+    public GroupServiceImpl(GroupRepository groupRepository) {
+        this.groupRepository = groupRepository;
     }
 
     @Override
     public List<Group> findAllGroups() {
-        return groupDAO.getAllGroups();
+        return groupRepository.findAll();
     }
 
     @Override
-    public Group findGroupById(int id){
-        Optional<Group> optionalGroup = groupDAO.getGroupById(id);
-        Group group = null;
-        if (optionalGroup.isPresent()) {
-            group = optionalGroup.get();
+    public Group findGroupById(int id) {
+        Optional<Group> group = groupRepository.findById(id);
+        if (group.isPresent()) {
+            return group.get();
         }
-        return group;
+        return null;
     }
 
     @Override
     @Transactional
     public Map<Group, Integer> findGroupsByNumberOfStudents(int students) {
-        return groupDAO.getGroupsByNumberOfStudents(students);
+        return groupRepository.findGroupsByStudentsIsGreaterThanAndStudentsIn(students)
+                .stream().collect(Collectors.toMap(
+                el -> ((Group) el.get("0")),
+                el -> ((Integer) el.get("1"))
+        ));
     }
-
-
 }
+
+
+
+
+

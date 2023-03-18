@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseDAO;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;

@@ -7,8 +7,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseDAO;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupDAO;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.initializer.Postgres;
 
 

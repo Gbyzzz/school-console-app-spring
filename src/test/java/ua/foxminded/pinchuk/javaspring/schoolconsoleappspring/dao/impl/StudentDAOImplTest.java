@@ -8,11 +8,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBase;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
 
 import java.util.List;
 

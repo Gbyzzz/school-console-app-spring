@@ -3,40 +3,44 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentDAO;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.StudentService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    private StudentDAO studentDAO;
+    private StudentRepository studentRepository;
 
-    public StudentServiceImpl(StudentDAO studentDAO) {
-        this.studentDAO = studentDAO;
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
     @Override
     @Transactional
     public void addStudent(Student student) {
-        studentDAO.saveOrUpdate(student);
+        studentRepository.save(student);
     }
 
     @Override
     public List<Student> findAllStudents() {
-        return studentDAO.getAllStudents();
+        return studentRepository.findAll();
     }
 
     @Override
-    @Transactional
     public void deleteStudent(Student student) {
-        studentDAO.deleteStudentById(student);
+        studentRepository.delete(student);
     }
 
     @Override
     public Student findStudentById(int studentId) {
-        return studentDAO.getStudentById(studentId);
+        Optional<Student> student = studentRepository.findById(studentId);
+        if(student.isPresent()){
+            return student.get();
+        }
+        return null;
     }
 
 
