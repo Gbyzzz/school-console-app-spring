@@ -17,7 +17,7 @@ public class Group {
     @Column(name = "group_name")
     private String groupName;
 
-    @OneToMany()
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "students", joinColumns = { @JoinColumn(name = "group_id") },
             inverseJoinColumns = { @JoinColumn(name = "student_id") })
     private List<Student> students;

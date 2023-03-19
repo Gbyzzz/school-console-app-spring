@@ -84,22 +84,23 @@ public class Course {
 
     @Override
     public int hashCode() {
-        return Objects.hash(courseId, courseName, courseDescription, students);
+        return Objects.hash(courseId, courseName,
+                courseDescription, students);
     }
 
-    @Override
-    public String toString() {
-        return "Course{" +
-                "courseId=" + courseId +
-                ", courseName='" + courseName + '\'' +
-                ", courseDescription='" + courseDescription + '\'' +
-                ", students=" + students +
-                '}';
-    }
-
-//        @Override
+//    @Override
 //    public String toString() {
-//        return courseId + " . " + courseName + ": " + courseDescription;
+//        return "Course{" +
+//                "courseId=" + courseId +
+//                ", courseName='" + courseName + '\'' +
+//                ", courseDescription='" + courseDescription + '\'' +
+//                ", students=" + students +
+//                '}';
 //    }
+
+        @Override
+    public String toString() {
+        return courseId + " . " + courseName + ": " + courseDescription;
+    }
 
 }

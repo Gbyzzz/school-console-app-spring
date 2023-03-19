@@ -11,8 +11,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBase;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,38 +23,38 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class StudentDAOImplTest extends IntegrationTestBase {
     @Autowired
-    private StudentDAO studentDAO;
+    private StudentRepository studentRepository;
 
     @ParameterizedTest
     @Order(3)
     @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideStudents")
     void saveOrUpdate(List<Student> expected) {
         Student student = new Student(3, "Sam", "Green", Source.group);
-        student.setStudentId(studentDAO.saveOrUpdate(student).getStudentId());
+        student.setStudentId(studentRepository.save(student).getStudentId());
         expected.add(student);
-        assertEquals(expected, studentDAO.getAllStudents());
+        assertEquals(expected, studentRepository.findAll());
     }
 
     @ParameterizedTest
     @Order(2)
     @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideStudents")
     void getAllStudents(List<Student> expected) {
-        assertEquals(expected, studentDAO.getAllStudents());
+        assertEquals(expected, studentRepository.findAll());
     }
 
     @ParameterizedTest
     @Order(4)
     @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideStudents")
     void deleteStudentById(List<Student> expected) {
-        studentDAO.deleteStudentById(expected.get(2));
+        studentRepository.delete(expected.get(2));
         expected.remove(2);
-        assertEquals(expected, studentDAO.getAllStudents());
+        assertEquals(expected, studentRepository.findAll());
     }
 
     @ParameterizedTest
     @Order(1)
     @MethodSource("ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source#provideGetStudentById")
     void getStudentById(Student student, int studentId) {
-        assertEquals(student, studentDAO.getStudentById(studentId));
+        assertEquals(Optional.of(student), studentRepository.findById(studentId));
     }
 }

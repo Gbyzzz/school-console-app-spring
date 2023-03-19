@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBase;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Course;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,25 +24,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GroupDAOImplTest extends IntegrationTestBase {
 
     @Autowired
-    private GroupDAO groupDAO;
+    private GroupRepository groupRepository;
 
     @Test
     void getAllGroups() {
-        System.out.println(groupDAO.getAllGroups());
+        System.out.println(groupRepository.findAll());
         assertEquals(new ArrayList<Group>() {{
             add(new Group(1, "First"));
-        }}, groupDAO.getAllGroups());
+        }}, groupRepository.findAll());
     }
 
     @Test
     void getGroupById() {
-        assertEquals(Optional.of(new Group(1, "First")), groupDAO.getGroupById(1));
+        assertEquals(Optional.of(new Group(1, "First")),
+                groupRepository.findById(1));
     }
 
     @Test
     void getGroupsByNumberOfStudents() {
-        assertEquals(new HashMap<Group, Integer>() {{
-            put(new Group(1, "First"), 2);
-        }}, groupDAO.getGroupsByNumberOfStudents(2));
+        assertEquals(new ArrayList<Map<Object, Object>>() {{
+            add(new HashMap<Object, Object> (){{
+                put("0", new Group(1, "First"));
+                put("1", 2);
+            }});
+        }}, groupRepository.findGroupsByStudentsIsGreaterThanAndStudentsIn(2));
     }
 }

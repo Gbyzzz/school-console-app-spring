@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.StudentService;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,14 +15,14 @@ import static org.mockito.Mockito.when;
 class StudentServiceImplTest {
 
     @MockBean
-    StudentDAO studentDAO;
+    StudentRepository studentRepository;
 
     @Autowired
     StudentService studentService;
 
     @Test
     void findAllStudents() {
-        when(studentDAO.getAllStudents()).thenReturn(Source.students);
+        when(studentRepository.findAll()).thenReturn(Source.students);
         assertEquals(Source.students, studentService.findAllStudents());
     }
 }
