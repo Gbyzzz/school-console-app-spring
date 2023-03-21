@@ -11,7 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBase;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.StudentRepository;
 
 import java.util.List;
 import java.util.Optional;

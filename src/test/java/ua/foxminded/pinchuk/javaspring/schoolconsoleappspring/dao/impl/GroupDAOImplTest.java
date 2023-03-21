@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.IntegrationTestBase;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Course;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.GroupRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;

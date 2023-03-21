@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseRepository;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.CourseRepository;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;

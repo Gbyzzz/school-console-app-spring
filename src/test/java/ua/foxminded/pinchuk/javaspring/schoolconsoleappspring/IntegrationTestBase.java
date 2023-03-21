@@ -6,9 +6,9 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseRepository;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupRepository;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.CourseRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.GroupRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.StudentRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.initializer.Postgres;
 
 

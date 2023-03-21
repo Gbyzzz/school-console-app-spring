@@ -2,7 +2,7 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 
 import org.springframework.stereotype.Service;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.CourseRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.CourseRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Course;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.CourseService;
 
@@ -35,11 +35,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course findCourseById(int courseId) {
+    public Course findCourseById(int courseId) throws Exception {
         Optional<Course> course = courseRepository.findById(courseId);
         if(course.isPresent()){
             return course.get();
         }
-        return null;
+        throw new Exception();
     }
 }

@@ -3,7 +3,7 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Group;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.GroupRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.GroupService;
 
 import java.util.*;

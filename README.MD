@@ -1,6 +1,6 @@
 # School console app Spring
 
-### Task 2.2<br/>
+### Task 2.6<br/>
 
 
 #### Build and run

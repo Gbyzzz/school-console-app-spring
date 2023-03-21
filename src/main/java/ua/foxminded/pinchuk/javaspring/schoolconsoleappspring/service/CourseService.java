@@ -16,5 +16,5 @@ public interface CourseService {
 
     void removeStudentFromCourse(Student student, Course course);
 
-    Course findCourseById(int courseId);
+    Course findCourseById(int courseId) throws Exception;
 }

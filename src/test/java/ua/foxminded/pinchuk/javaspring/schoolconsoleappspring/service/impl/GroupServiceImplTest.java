@@ -5,12 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.Source;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.GroupRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.GroupRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.GroupService;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

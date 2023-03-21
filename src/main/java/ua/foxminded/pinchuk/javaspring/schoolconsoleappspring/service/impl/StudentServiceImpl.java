@@ -3,7 +3,7 @@ package ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.bean.Student;
-import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.dao.StudentRepository;
+import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.repository.StudentRepository;
 import ua.foxminded.pinchuk.javaspring.schoolconsoleappspring.service.StudentService;
 
 import java.util.List;
@@ -35,12 +35,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findStudentById(int studentId) {
+    public Student findStudentById(int studentId) throws Exception {
         Optional<Student> student = studentRepository.findById(studentId);
         if(student.isPresent()){
             return student.get();
         }
-        return null;
+    throw new Exception();
     }
 
 

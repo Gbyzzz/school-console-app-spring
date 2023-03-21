@@ -31,7 +31,12 @@ public class AddStudentToCourse implements Command {
             io.outputList(students);
             io.outputLine("Input the index of the student");
             int studentId = io.getInt();
-            Student student = studentService.findStudentById(studentId);
+            Student student = null;
+            try {
+                student = studentService.findStudentById(studentId);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             io.outputLine("This student already visiting next courses:");
             io.outputList(student.getCourses());
             io.outputLine("List of available courses:");
@@ -39,7 +44,12 @@ public class AddStudentToCourse implements Command {
             io.outputLine("");
             io.outputLine("Input the index of the course");
             int courseId = io.getInt();
-            Course course = courseService.findCourseById(courseId);
+            Course course = null;
+            try {
+                course = courseService.findCourseById(courseId);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             course.getStudents().add(student);
             courseService.saveOrUpdate(course);
         } else {

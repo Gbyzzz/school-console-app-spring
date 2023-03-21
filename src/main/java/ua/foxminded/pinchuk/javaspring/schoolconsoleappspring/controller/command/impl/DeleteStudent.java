@@ -26,7 +26,12 @@ public class DeleteStudent implements Command {
             io.outputList(students);
             io.outputLine("Input the index of the student");
             int studentId = io.getInt();
-            Student student = studentService.findStudentById(studentId);
+            Student student = null;
+            try {
+                student = studentService.findStudentById(studentId);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
             studentService.deleteStudent(student);
         } else {
             io.outputLine("No students were found");

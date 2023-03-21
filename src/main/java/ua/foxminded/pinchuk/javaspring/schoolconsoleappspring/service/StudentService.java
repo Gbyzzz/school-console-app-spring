@@ -12,5 +12,5 @@ public interface StudentService {
 
     void deleteStudent(Student studentId);
 
-    Student findStudentById(int studentId);
+    Student findStudentById(int studentId) throws Exception;
 }
