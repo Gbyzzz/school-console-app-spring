@@ -30,7 +30,7 @@ public class DeleteStudent implements Command {
             try {
                 student = studentService.findStudentById(studentId);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Student with id " + studentId + " haven't found:" + e);
             }
             studentService.deleteStudent(student);
         } else {

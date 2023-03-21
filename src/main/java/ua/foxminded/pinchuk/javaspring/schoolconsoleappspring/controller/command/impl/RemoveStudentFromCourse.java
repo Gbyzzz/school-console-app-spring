@@ -34,7 +34,7 @@ public class RemoveStudentFromCourse implements Command {
             try {
                 student = studentService.findStudentById(io.getInt());
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Student with such id haven't been found:" + e);
             }
             io.outputLine("This student is visiting next courses:");
             io.outputList(student.getCourses());
@@ -43,7 +43,7 @@ public class RemoveStudentFromCourse implements Command {
             try {
                 course = courseService.findCourseById(io.getInt());
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Course with such id haven't found:" + e);
             }
             courseService.removeStudentFromCourse(student, course);
 

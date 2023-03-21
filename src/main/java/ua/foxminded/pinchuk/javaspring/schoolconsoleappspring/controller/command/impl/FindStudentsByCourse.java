@@ -31,7 +31,7 @@ public class FindStudentsByCourse implements Command {
             try {
                 io.outputList(courseService.findCourseById(courseId).getStudents());
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Course with id " + courseId + " haven't found:" + e);
             }
             io.outputLine("");
         } else {

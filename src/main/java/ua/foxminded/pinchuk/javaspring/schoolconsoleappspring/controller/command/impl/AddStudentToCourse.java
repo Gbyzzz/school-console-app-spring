@@ -48,7 +48,7 @@ public class AddStudentToCourse implements Command {
             try {
                 course = courseService.findCourseById(courseId);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Course with id " + courseId + " haven't found:" + e);
             }
             course.getStudents().add(student);
             courseService.saveOrUpdate(course);
