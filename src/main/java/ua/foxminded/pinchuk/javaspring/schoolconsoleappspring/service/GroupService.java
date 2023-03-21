@@ -8,7 +8,7 @@ import java.util.Map;
 public interface GroupService {
     List<Group> findAllGroups();
 
-    Group findGroupById(int id);
+    Group findGroupById(int id) throws Exception;
 
     Map<Group, Integer> findGroupsByNumberOfStudents(int students);
 }

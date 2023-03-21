@@ -31,8 +31,12 @@ public class AddStudent implements Command {
         io.outputLine("Please input index of group from the list above:");
 
 
-        studentService.addStudent(new Student(firstName, lastName, groupService.findGroupById(io.getInt())));
-            io.outputLine("Successfully added");
+        try {
+            studentService.addStudent(new Student(firstName, lastName, groupService.findGroupById(io.getInt())));
+        } catch (Exception e) {
+            throw new RuntimeException("Group with such id haven't found:" + e);
+        }
+        io.outputLine("Successfully added");
 
     }
 }

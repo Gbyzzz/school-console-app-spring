@@ -24,12 +24,12 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Group findGroupById(int id) {
+    public Group findGroupById(int id) throws Exception {
         Optional<Group> group = groupRepository.findById(id);
         if (group.isPresent()) {
             return group.get();
         }
-        return null;
+        throw new Exception();
     }
 
     @Override
